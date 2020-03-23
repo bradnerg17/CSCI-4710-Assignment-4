@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Show Vampire Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script>
+    function addRow(){
+
+      var table = document.getElementById("class_table");
+
+      var newRow = table.insertRow(1);
+
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+
+      cell1.innerHTML = document.getElementById("fname").value;
+      cell2.innerHTML = document.getElementById("lname").value;
+      cell3.innerHTML = "?"
+
+      var member = {
+        "person": [
+          {
+            "firstName": document.getElementById("fname").value,
+            "lastName": document.getElementById("lname").value,
+            "isVampire": "?"
+          }
+        ]
+      }
+    }
+  </script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="default.html">Introductions</a></li>
+      <li class="active"><a href="table.html">Classmates</a></li>
+      <li><a href="vampire.html">Show Vampires</a></li>
+      <li><a href="chart.html">Piechart</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+  <h2>Input Classmates</h2>
+  <table class="table" id="class_table">
+    <caption>Classmates</caption>
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Vampire?</th>
+      </tr>
+    </thead>
+     <tbody>
+      <tr id="student_01">
+        <td>John</td>
+        <td>Doe</td>
+        <td>?</td>
+      </tr>
+      <tr id="student_02">
+        <td>Lee</td>
+        <td>Moe</td>
+        <td>?</td>
+      </tr>
+      <tr id="student_03">
+        <td>Emma</td>
+        <td>Jones</td>
+        <td>?</td>
+      </tr>
+      <tr id="student_04">
+        <td>Ava</td>
+        <td>Smith</td>
+        <td>?</td>
+      </tr>
+      <tr id="student_05">
+        <td>Alex</td>
+        <td>Smith</td>
+        <td>?</td>
+      </tr>
+    </tbody>
+  </table>
+
+  First Name: <input type="text" id="fname" /><br/><br/>
+  Last Name: <input type="text" name="lname" id="lname" /><br/><br/>
+  <button class="btn btn-primary" onclick="addRow();">Add Row</button>
+
+</div>
+
+</body>
+</html>
