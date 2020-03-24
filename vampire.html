@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+	// array of json objects
+    var classmate_data = [
+      {
+        'name'      : 'John',
+        'shadow'    : 'no',
+        'galic'     : 'no',
+        'complexion': 'pale'
+      },
+      {
+        'name'      : 'Lee',
+        'shadow'    : 'yes',
+        'galic'     : 'no',
+        'complexion': 'pale'
+      },
+      {
+        'name'      : 'Emma',
+        'shadow'    : 'no',
+        'galic'     : 'yes',
+        'complexion': 'brown'
+      },
+      {
+        'name'      : 'Ava',
+        'shadow'    : 'yes',
+        'galic'     : 'yes',
+        'complexion': 'olive '
+      },
+      {
+        'name'      : 'Alex',
+        'shadow'    : 'no',
+        'galic'     : 'no',
+        'complexion': 'brown'
+      },
+    ];
+	
+    function display_chosen_option() {
+
+      if (document.getElementById('mySelect').selectedIndex == 0)
+	  {
+		display_vampires_random();
+	  }
+	  else
+	  {
+		display_vampires_threshold();
+	  }
+    }
+	
+	function display_vampires_random() {
+		for(var i=0; i < classmate_data.length; i++)
+		{
+			document.getElementById(classmate_data[i]['name']).lastElementChild.innerText = Math.random() > 0.5 ? "Yes" : "No";
+		}
+	}
+	
+	function display_vampires_threshold() {
+		for(var i=0; i < classmate_data.length; i++)
+		{
+			var thresh = 0
+			if( classmate_data[i]['shadow'] == 'no' )
+			{
+				thresh += 4;
+			}
+			if( classmate_data[i]['galic'] == 'no' )
+			{		
+				thresh += 3;
+			}
+			if( classmate_data[i]['complexion'] == 'pale' )
+			{
+				thresh += 3;
+			}
+			
+			document.getElementById(classmate_data[i]['name']).lastElementChild.innerText = thresh > 6 ? "Yes" : "No";
+		}
+	}
+  </script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="default.html">Introductions</a></li>
+      <li><a href="table.html">Classmates</a></li>
+      <li class="active"><a href="vampire.html">Show Vampires</a></li>
+      <li><a href="chart.html">Piechart</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Input Classmates</h2>
+  <table class="table" id="class_table">
+    <caption>Classmates</caption>
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Vampire?</th>
+      </tr>
+    </thead>
+     <tbody>
+      <tr id="John">
+        <td>John</td>
+        <td>Doe</td>
+        <td>?</td>
+      </tr>
+      <tr id="Lee">
+        <td>Lee</td>
+        <td>Moe</td>
+        <td>?</td>
+      </tr>
+      <tr id="Emma">
+        <td>Emma</td>
+        <td>Jones</td>
+        <td>?</td>
+      </tr>
+      <tr id="Ava">
+        <td>Ava</td>
+        <td>Smith</td>
+        <td>?</td>
+      </tr>
+      <tr id="Alex">
+        <td>Alex</td>
+        <td>Smith</td>
+        <td>?</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <label for="mySelect">Select Model Logic:</label>
+    <select class="form-control" id="mySelect">
+      <option value='1'>Random Guess</option>
+      <option value='2'>Threshold Based Method</option>
+    </select>   
+
+    <!-- write a function to display chosen option with a pop up window. -->
+    <button type="button" onclick="display_chosen_option()">Display vampires</button>
+
+    <button type="button" onclick="document.getElementById('mySelect').selectedIndex = '-1'">Deselect all options.</button>    
+  </div>
+
+</div>
+
+</body>
+</html>
